@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {varibles} from './Variable.js'
+import {variables} from './Variables.js';
 
 export class Employee extends Component{
     constructor(props){
@@ -11,7 +11,7 @@ export class Employee extends Component{
     }
     refreshList()
     {
-        fetch(varibles.API_URL+'employee')
+        fetch(variables.API_URL+'employee')
         .then(response=>response.json())
         .then(data=>{
             this.setState({emps:data});
