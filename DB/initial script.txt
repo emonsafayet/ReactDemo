@@ -1,0 +1,45 @@
+USE [test_DB]
+GO
+/****** Object:  Table [dbo].[Department]    Script Date: 11/30/2021 5:55:44 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Department](
+	[DepartmentId] [int] IDENTITY(1,1) NOT NULL,
+	[DepartmentName] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Department] PRIMARY KEY CLUSTERED 
+(
+	[DepartmentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Employee]    Script Date: 11/30/2021 5:55:45 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Employee](
+	[EmployeeId] [int] IDENTITY(1,1) NOT NULL,
+	[EmployeeName] [nvarchar](50) NULL,
+	[Department] [nvarchar](50) NULL,
+	[DateOfJoining] [datetime] NULL,
+	[PhotoFileName] [nvarchar](500) NULL,
+ CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
+(
+	[EmployeeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Department] ON 
+
+INSERT [dbo].[Department] ([DepartmentId], [DepartmentName]) VALUES (1, N'Information Technology')
+INSERT [dbo].[Department] ([DepartmentId], [DepartmentName]) VALUES (2, N'Accounts')
+INSERT [dbo].[Department] ([DepartmentId], [DepartmentName]) VALUES (3, N'HR')
+SET IDENTITY_INSERT [dbo].[Department] OFF
+SET IDENTITY_INSERT [dbo].[Employee] ON 
+
+INSERT [dbo].[Employee] ([EmployeeId], [EmployeeName], [Department], [DateOfJoining], [PhotoFileName]) VALUES (1, N'Bob', N'IT', CAST(N'2021-01-21T00:00:00.000' AS DateTime), N'anonymous.png')
+INSERT [dbo].[Employee] ([EmployeeId], [EmployeeName], [Department], [DateOfJoining], [PhotoFileName]) VALUES (2, N'steve', N'Accounts', CAST(N'2021-11-22T00:00:00.000' AS DateTime), N'one.png')
+INSERT [dbo].[Employee] ([EmployeeId], [EmployeeName], [Department], [DateOfJoining], [PhotoFileName]) VALUES (3, N'emon', N'Developer', CAST(N'2021-11-30T10:17:28.070' AS DateTime), N'emon.png')
+SET IDENTITY_INSERT [dbo].[Employee] OFF
